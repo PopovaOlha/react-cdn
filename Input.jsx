@@ -1,4 +1,4 @@
-const input = () => {
+const Input = () => {
 	return (
 	<div className="text-sm text-gray-600 mb-2">
 		<label className="block mb-1 font-medium text-gray-700">Input Field
@@ -11,3 +11,4 @@ const input = () => {
 		</div>
 	);
 }
+export default Input;
