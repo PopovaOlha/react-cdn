@@ -19,11 +19,13 @@
 const Input = () => {
 	return (
 	<div className="text-sm text-gray-600 mb-2">
-		<label>hi
+		<label>Numbers of passengers
 		<input
-			type="text"
+			type="number"
 			placeholder="Type something..."
-			className="p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+			className={{
+				'border border-gray-300 rounded-md p-2 w-full focus:outline-none focus:ring-2 focus:ring-#2f2fc7-500': true,
+			}}
 		/>
 	</label>
 		</div>
