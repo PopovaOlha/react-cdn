@@ -36,7 +36,7 @@
         if (!isNaN(value)) {
           setMonths(value);
         } else {
-          setMonths(0);
+          setMonth(0);
         }
       };
 
@@ -63,7 +63,6 @@
 </div>
 				)
 		}
-
 		const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(<ShowSeasonByMonth />);
 	</script>
