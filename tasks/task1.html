@@ -13,7 +13,7 @@
   <div id="root" class="p-4"></div>
 
   <script type="text/babel">
-    const Input = () => {
+    const PassengerCalculator = () => {
       const [passengers, setPassengers] = React.useState(0);
 
       const BOTTLES_PER_PERSON = 2;
@@ -56,14 +56,8 @@
       );
     };
 
-    const App = () => (
-      <div>
-        <Input />
-      </div>
-    );
-
     const root = ReactDOM.createRoot(document.getElementById("root"));
-    root.render(<App />);
+    root.render(<PassengerCalculator />);
   </script>
 </body>
 </html>
