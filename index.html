@@ -10,22 +10,28 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  <div id="root"></div>
+  <div id="root" class="p-4"></div>
 
   <script type="text/babel">
     const Input = () => {
       const [passengers, setPassengers] = React.useState(0);
 
+      const BOTTLES_PER_PERSON = 2;
+      const SANDWICHES_PER_PERSON = 3;
+      const SEATS_PER_BUS = 20;
+
+      const buses = Math.ceil(passengers / SEATS_PER_BUS);
+      const bottles = passengers * BOTTLES_PER_PERSON;
+      const sandwiches = passengers * SANDWICHES_PER_PERSON;
+
       const handleChange = (e) => {
         const value = parseInt(e.target.value, 10);
         if (!isNaN(value)) {
           setPassengers(value);
+        } else {
+          setPassengers(0);
         }
       };
-
-      const buses = Math.ceil(passengers / 20);
-      const bottles = passengers * 2;
-      const sandwiches = passengers * 3;
 
       return (
         <div className="max-w-md mx-auto p-4">
@@ -34,8 +40,10 @@
             <input
               type="number"
               onChange={handleChange}
+              value={passengers}
               className="border border-gray-300 rounded-md p-2 w-full mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter number"
+              min="0"
             />
           </label>
 
@@ -59,3 +67,4 @@
   </script>
 </body>
 </html>
+
