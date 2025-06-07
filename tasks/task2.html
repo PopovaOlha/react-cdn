@@ -14,20 +14,20 @@
   <div id="root" class="w-full max-w-2xl"></div>
 
   <script type="text/babel">
-    const forestByMonth = [
-      { id: 1, month: "January", image: "../images/january.jpeg" },
-      { id: 2, month: "February", image: "../images/February.jpeg" },
-      { id: 3, month: "March", image: "../images/Marth.jpeg" },
-      { id: 4, month: "April", image: "../images/April.jpeg" },
-      { id: 5, month: "May", image: "../images/May.jpeg" },
-      { id: 6, month: "June", image: "../images/June.jpeg" },
-      { id: 7, month: "July", image: "../images/July.jpeg" },
-      { id: 8, month: "August", image: "../images/August.jpeg" },
-      { id: 9, month: "September", image: "../images/September.jpeg" },
-      { id: 10, month: "October", image: "../images/October.jpeg" },
-      { id: 11, month: "November", image: "../images/November.jpeg" },
-      { id: 12, month: "December", image: "../images/december.jpeg" },
-    ];
+   const forestByMonth = [
+  { id: 1, month: "January", image: "../images/january.jpeg", emoji: "🧥🧤🥾" },
+  { id: 2, month: "February", image: "../images/February.jpeg", emoji: "🧥🧣❄️" },
+  { id: 3, month: "March", image: "../images/Marth.jpeg", emoji: "🧥👟☔️" },
+  { id: 4, month: "April", image: "../images/April.jpeg", emoji: "🧢🧥👖🌦" },
+  { id: 5, month: "May", image: "../images/May.jpeg", emoji: "👕👖🧢🌸" },
+  { id: 6, month: "June", image: "../images/June.jpeg", emoji: "🩳👒🕶🩴" },
+  { id: 7, month: "July", image: "../images/July.jpeg", emoji: "👕🩳🧢🌞" },
+  { id: 8, month: "August", image: "../images/August.jpeg", emoji: "👙🩴🕶🌤" },
+  { id: 9, month: "September", image: "../images/September.jpeg", emoji: "🧥👟🍁" },
+  { id: 10, month: "October", image: "../images/October.jpeg", emoji: "🧣🧥🎃🍂" },
+  { id: 11, month: "November", image: "../images/November.jpeg", emoji: "🧥👢🍁🌧" },
+  { id: 12, month: "December", image: "../images/december.jpeg", emoji: "🧤🧣🧥🎄" },
+];
 
     const ShowSeasonByMonth = () => {
       const [month, setMonth] = React.useState(0);
@@ -56,8 +56,8 @@
             />
           </label>
 
-          {selectedMonth ? (
-            <div key={selectedMonth.id} className="mt-6 text-center">
+          {forestByMonth.map((item) => item.id === month) ? (
+            <div key={item.id} className="mt-6 text-center">
               <h2 className="text-2xl font-semibold text-green-700 mb-4">{selectedMonth.month}</h2>
               <img src={selectedMonth.image} alt={selectedMonth.month} className="rounded-xl shadow-md w-full max-h-[400px] object-cover" />
             </div>
