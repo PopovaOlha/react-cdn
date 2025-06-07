@@ -1,70 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Number of Months</title>
-	<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Number of Months</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-	<div id="root" class="p-4"></div>
-	<script type="text/babel">
+<body class="bg-gradient-to-br from-green-50 to-blue-100 min-h-screen flex items-center justify-center p-6">
 
-		const forestByMonth = [
-    { id: 1, month: "January", image: "../images/january.jpeg" },
-    { id: 2, month: "February", image: "../images/February.jpeg" },
-    { id: 3, month: "March", image: "../images/Marth.jpeg" },
-    { id: 4, month: "April", image: "../images/April.jpeg" },
-    { id: 5, month: "May", image: "../images/May.jpeg" },
-    { id: 6, month: "June", image: "../images/June.jpeg" },
-    { id: 7, month: "July", image: "../images/July.jpeg" },
-    { id: 8, month: "August", image: "../images/August.jpeg" },
-    { id: 9, month: "September", image: "../images/September.jpeg" },
-    { id: 10, month: "October", image: "../images/October.jpeg" },
-    { id: 11, month: "November", image: "../images/November.jpeg" },
-    { id: 12, month: "December", image: "../images/december.jpeg" },
-  ];
-		const ShowSeasonByMonth = () => {
- 
-			const [month, setMonth] = React.useState(0);
+  <div id="root" class="w-full max-w-2xl"></div>
 
-			const handleChange = (e) => {
+  <script type="text/babel">
+    const forestByMonth = [
+      { id: 1, month: "January", image: "../images/january.jpeg" },
+      { id: 2, month: "February", image: "../images/February.jpeg" },
+      { id: 3, month: "March", image: "../images/Marth.jpeg" },
+      { id: 4, month: "April", image: "../images/April.jpeg" },
+      { id: 5, month: "May", image: "../images/May.jpeg" },
+      { id: 6, month: "June", image: "../images/June.jpeg" },
+      { id: 7, month: "July", image: "../images/July.jpeg" },
+      { id: 8, month: "August", image: "../images/August.jpeg" },
+      { id: 9, month: "September", image: "../images/September.jpeg" },
+      { id: 10, month: "October", image: "../images/October.jpeg" },
+      { id: 11, month: "November", image: "../images/November.jpeg" },
+      { id: 12, month: "December", image: "../images/december.jpeg" },
+    ];
+
+    const ShowSeasonByMonth = () => {
+      const [month, setMonth] = React.useState(0);
+
+      const handleChange = (e) => {
         const value = parseInt(e.target.value, 10);
-        if (!isNaN(value)) {
-          setMonth(value);
-        } else {
-          setMonth(0);
-        }
+        setMonth(!isNaN(value) ? value : 0);
       };
 
-			return(  <div className="max-w-md mx-auto p-4">
-          <label className="block text-lg font-medium text-gray-700 mb-2">
-            Number of Months:
+      const selectedMonth = forestByMonth.find((item) => item.id === month);
+
+      return (
+        <div className="bg-white shadow-2xl rounded-2xl p-8">
+          <h1 className="text-3xl font-bold text-center text-green-600 mb-6">🌲 Forest by Month</h1>
+
+          <label className="block text-lg text-gray-700 mb-4 font-medium">
+            Enter month number (1–12):
             <input
               type="number"
               onChange={handleChange}
               value={month}
-              className="border border-gray-300 rounded-md p-2 w-full mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter number"
-              min="0"
+              className="mt-2 w-full border border-gray-300 rounded-md px-4 py-2 text-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+              placeholder="e.g. 3"
+              min="1"
+              max="12"
             />
           </label>
-          {forestByMonth.map((item) =>
-            item.id === month ? (
-    <div key={item.id}>
-      <h2 className="text-center text-xl font-bold">{item.month}</h2>
-      <img src={item.image} alt={item.month} className="w-full max-w-md" />
-    </div>
-  ) : null
-)}	
-</div>
-				)
-		}
-		const root = ReactDOM.createRoot(document.getElementById("root"));
+
+          {selectedMonth ? (
+            <div key={selectedMonth.id} className="mt-6 text-center">
+              <h2 className="text-2xl font-semibold text-green-700 mb-4">{selectedMonth.month}</h2>
+              <img src={selectedMonth.image} alt={selectedMonth.month} className="rounded-xl shadow-md w-full max-h-[400px] object-cover" />
+            </div>
+          ) : (
+            <p className="text-center text-gray-400 mt-8">No month selected</p>
+          )}
+
+          <p className="text-center text-sm text-gray-400 mt-8">Built with React & Tailwind 💚</p>
+        </div>
+      );
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(<ShowSeasonByMonth />);
-	</script>
+  </script>
 </body>
 </html>
