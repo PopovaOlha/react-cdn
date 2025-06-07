@@ -55,7 +55,7 @@
           {forestByMonth.map((item) =>
             item.id === month ? (
     <div key={item.id}>
-      <h2>{item.month}</h2>
+      <h2 className="text-center text-xl font-bold">{item.month}</h2>
       <img src={item.image} alt={item.month} className="w-full max-w-md" />
     </div>
   ) : null
